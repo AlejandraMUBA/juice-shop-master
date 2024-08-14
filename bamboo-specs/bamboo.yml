@@ -1,8 +1,8 @@
 version: 2
 
 plan:
-  project-key: TES
-  key: RC
+  project-key: Cybolt_C
+  key: A1
   name: Checkmarx ast-cli
 
 stages:
