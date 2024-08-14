@@ -1,8 +1,8 @@
 version: 2
 
 plan:
-  project-key: Cybolt_C
-  key: A1
+  project-key: A1
+  key: JUIC
   name: Checkmarx ast-cli
 
 stages:
