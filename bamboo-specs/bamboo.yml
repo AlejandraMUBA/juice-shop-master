@@ -20,13 +20,13 @@ Scan:
         image: checkmarx/ast-cli
         detach: 'false'
         serviceWait: 'false'
-        command: /app/bin/cx scan create -s .  --project-name mybamboo --base-uri ${bamboo.CX_BASE_URI} --tenant ${bamboo.CX_TENANT} --client-id ${bamboo.CX_CLIENT_ID} --client-secret ${bamboo.CX_CLIENT_ID_SECRET} --branch ${bamboo.planRepository.1.branchName} 
+        command: /app/bin/cx scan create -s .  --project-name mybamboo --base-uri ${bamboo.CX_BASE_URI} --tenant ${bamboo.CX_TENANT} --client-id ${bamboo.CX_CLIENT_ID} --client-secret ${bamboo.CX_CLIENT_ID_SECRET} --branch ${bamboo.planRepository.1.branchName} --report-format summaryHTML --output-path ./cx_results/ --output-name cx_results
         workDir: /data
         additionalArgs: --entrypoint=""
         hostDirectory_0: ${bamboo.working.directory}
         containerDataVolume_0: /data
       description: Ast Scan
-    artifacts:
+  artifacts:
   - name: checkmarx
     location: cx_results
     pattern: cx_results.html
