@@ -26,3 +26,10 @@ Scan:
         hostDirectory_0: ${bamboo.working.directory}
         containerDataVolume_0: /data
       description: Ast Scan
+    artifacts:
+  - name: checkmarx
+    location: cx_results
+    pattern: cx_results.html
+    shared: false
+    required: false
+  artifact-subscriptions: []
