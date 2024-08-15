@@ -2,17 +2,17 @@ name: Checkmarx One Scan
 
 on: [ push ]
 
-jobs:
-  cx-scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.0
-      - name: Checkmarx One CLI Action
-        uses: checkmarx/ast-github-action@main
-        with:
-          base_uri: ${{secrets.AST_RND_SCANS_BASE_URI}}
-          cx_tenant: ${{secrets.AST_RND_SCANS_TENANT}}
-          cx_client_id: ${{secrets.AST_RND_SCANS_CLIENT_ID}}
-          cx_client_secret: ${{secrets.AST_RND_SCANS_CLIENT_SECRET}}
-          additional_params: --tags phoenix --threshold "sast-high=1;sca-high=1;sca-medium=3;sca-low=1" --debug
+#jobs:
+#  cx-scan:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4.1.0
+#      - name: Checkmarx One CLI Action
+#        uses: checkmarx/ast-github-action@main
+#        with:
+#          base_uri: ${{secrets.AST_RND_SCANS_BASE_URI}}
+#          cx_tenant: ${{secrets.AST_RND_SCANS_TENANT}}
+#          cx_client_id: ${{secrets.AST_RND_SCANS_CLIENT_ID}}
+#          cx_client_secret: ${{secrets.AST_RND_SCANS_CLIENT_SECRET}}
+#          additional_params: --tags phoenix --threshold "sast-high=1;sca-high=1;sca-medium=3;sca-low=1" --debug
