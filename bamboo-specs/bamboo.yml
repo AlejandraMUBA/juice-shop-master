@@ -2,30 +2,17 @@ version: 2
 plan:
   project-key: A1
   key: JUIC
-  name: Checkmarx Scan
+  name: Checkmarx ast-cli
+
 stages:
-- Default Stage:
-    jobs:
-    - Scan
-Scan:
-  key: SCAN
+  - Stage 1:
+      jobs:
+        - Job cli
+
+Job cli:
   tasks:
-  - checkout:
-      force-clean-build: 'false'
-      description: Checkout Default Repository
-  - any-task:
-      plugin-key: com.atlassian.bamboo.plugins.bamboo-docker-plugin:task.docker.cli
-      configuration:
-        commandOption: run
-        image: checkmarx/ast-cli
-        detach: 'false'
-        serviceWait: 'false'
-        command: /app/bin/cx scan create -s .  --project-name mybamboo --base-uri ${bamboo.CX_BASE_URI} --tenant ${bamboo.CX_TENANT} --client-id ${bamboo.CX_CLIENT_ID} --client-secret ${bamboo.CX_CLIENT_ID_SECRET} --branch ${bamboo.planRepository.1.branchName} --report-format summaryHTML --output-path ./cx_results/ --output-name cx_results
-        workDir: /data
-        additionalArgs: --entrypoint=""
-        hostDirectory_0: ${bamboo.working.directory}
-        containerDataVolume_0: /data
-      description: Ast Scan
+    - script:
+        - C:\Users\alejandra.munoz\Downloads\ast-cli_2.2.3_windows_x64\cx scan create -s ${bamboo.build.working.directory} --project-name ${bamboo.planRepository.1.name} --base-uri ${bamboo.CX_BASE_URI} --tenant ${bamboo.CX_TENANT} --client-id ${bamboo.CX_CLIENT_ID} --client-secret ${bamboo.CX_CLIENT_ID_SECRET} --branch ${bamboo.planRepository.1.branchName} --report-format summaryHTML --output-path ./cx_results/ --output-name cx_results
   artifacts:
   - name: checkmarx
     location: cx_results
