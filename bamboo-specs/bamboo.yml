@@ -12,7 +12,7 @@ stages:
 Job cli:
   tasks:
     - script:
-        - C:\Users\alejandra.munoz\Downloads\ast-cli_2.2.3_windows_x64\cx scan create -s ${bamboo.build.working.directory} --project-name ${bamboo.planRepository.1.name} --base-uri ${bamboo.CX_BASE_URI} --tenant ${bamboo.CX_TENANT} --client-id ${bamboo.CX_CLIENT_ID} --client-secret ${bamboo.CX_CLIENT_ID_SECRET} --branch ${bamboo.planRepository.1.branchName} --report-format summaryHTML --output-path ./cx_results/ --output-name cx_results
+        - ${bamboo.CX_CLI} scan create -s ${bamboo.build.working.directory} --project-name ${bamboo.planRepository.1.name} --base-uri ${bamboo.CX_BASE_URI} --tenant ${bamboo.CX_TENANT} --client-id ${bamboo.CX_CLIENT_ID} --client-secret ${bamboo.CX_CLIENT_ID_SECRET} --branch ${bamboo.planRepository.1.branchName} --report-format summaryHTML --output-path ./cx_results/ --output-name cx_results
   artifacts:
   - name: checkmarx
     location: cx_results
